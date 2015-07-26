@@ -86,7 +86,9 @@ module.exports = function makeWebpackConfig (options) {
   // Initialize module
   config.module = {
     preLoaders: [],
-    loaders: [{
+    loaders: [
+    { test: /bootstrap-sass\/assets\/javascripts\/.*\.js/, loader: 'imports?jQuery=jquery' },
+    {
       // JS LOADER
       // Reference: https://github.com/babel/babel-loader
       // Transpile .js files using babel-loader
@@ -109,8 +111,19 @@ module.exports = function makeWebpackConfig (options) {
       // Allow loading html through js
       test: /\.html$/,
       loader: 'html'
-    }]
-  };
+    },
+    // **IMPORTANT** This is needed so that each bootstrap js file required by
+    // bootstrap-sass-loader has access to the jQuery object
+
+    // Needed for the css-loader when [bootstrap-webpack](https://github.com/bline/bootstrap-webpack)
+    // loads bootstrap's css.
+    { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
+    { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: "url?limit=10000&mimetype=application/font-woff" },
+    { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
+    { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
+    { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" }
+    
+  ]};
 
   // ISPARTA LOADER
   // Reference: https://github.com/ColCh/isparta-instrumenter-loader
