@@ -30,7 +30,7 @@ const value = {
   additionalCourses: [
     tuple('Driving license', 'Category B')
   ],
-  knowledgeAndSklills: [
+  knowledgeAndSkills: [
     tuple('Client-side technologies',
       'HTML 5, CSS 3, Javascript ES5/ES2015, TypeScript',
       'KnockoutJS, AngularJS, Backbone Marionette',

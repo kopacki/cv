@@ -1,1 +1,25 @@
+<header>
+  <h1>Curriculum vitae</h1>
+</header>
+
 {{ sections }}
+
+<main>
+  <aside class="photo">
+    <img src="../views/tomasz-kopacki.jpg" title="Tomasz Kopacki">
+  </aside>
+
+  <section ng-repeat="section in sections">
+    <header>
+      <h3></h3>
+    </header>
+
+    <article>
+      <dl>
+        <dt ng-repeat-start="i in items">{{i.key}}</dt>
+          <dd ng-repeat-end>{{i.value}}</dd>
+      </dl>
+    </article>
+  </section>
+
+</main>
