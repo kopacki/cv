@@ -3,20 +3,20 @@
 </header>
 
 <section class="cvContent">
-  <aside class="cvPhoto">
-    <img src="../views/tomasz-kopacki.jpg" title="Tomasz Kopacki">
-  </aside>
-
-  <ul>
-    <li class="cvSection" ng-repeat="section in sections">
-      <header>
+  <ul class="cvSections">
+    <li class="cvSection row" ng-repeat="section in sections">
+      <header class="col-xs-12">
         <h3>{{ ::section.name }}</h3>
       </header>
 
-      <article>
-        <dl ng-if="section.type === 'dl'">
+      <aside class="cvPhoto col-sm-3 col-xs-12" ng-if="$index === 0">
+        <img src="../views/tomasz-kopacki.jpg" class="img-responsive" alt="Tomasz Kopacki">
+      </aside>
+
+      <article class="col-sm-9 col-xs-12">     
+        <dl ng-if="section.type === 'dl'" class="dl-horizontal">
           <dt ng-repeat-start="member in section.members">{{ ::member.label }}</dt>
-            <dd ng-repeat-end>{{ ::member.names.join('\n') }}</dd>
+            <dd ng-repeat-end>{{ ::member.names.join('/n') }}</dd>
         </dl>
         <ul ng-if="section.type === 'ul'">
           <li ng-repeat="member in section.members">{{ ::member }}</li>

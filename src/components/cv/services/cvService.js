@@ -55,7 +55,7 @@ class CvService {
     const hobby = _getDataForKeys('hobby');
 
     cvData.push(_asCvSection('Personal data', 'dl', personalData));
-    cvData.push(_asCvSection('Edtucation', 'dl', education));
+    cvData.push(_asCvSection('Education', 'dl', education));
     cvData.push(_asCvSection('Experience', 'dl', experience));
     cvData.push(_asCvSection('Foreign languages', 'dl', foreignLanguages));
     cvData.push(_asCvSection('Additional courses', 'dl', additionalCourses));
