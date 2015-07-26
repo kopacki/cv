@@ -1,20 +1,25 @@
 let _personalDataValue;
 
-function _asSection(name, type, memebers) {
+function _asCvSection(name, type, members) {
   return {
     name: name,
     type: type,
-    memebers: memebers
+    members: members
   };
 }
 
 function _getDataForKeys(...keys) {
-  const data = [];
+  let data = [];
 
   for(let key of keys) {
     try {
       let value = _getDataForKey(key);
-      data.push(value);
+
+      if(Array.isArray(value)) {
+        data = data.concat(value);
+      } else {
+        data.push(value);        
+      }
     } catch (e) {
       console.error(e.message);
     }
@@ -49,13 +54,13 @@ class CvService {
     const knowledgeAndSkills = _getDataForKeys('knowledgeAndSkills');
     const hobby = _getDataForKeys('hobby');
 
-    cvData.push(_asSection('Personal data', 'dl', personalData));
-    cvData.push(_asSection('Dducation', 'dl', education));
-    cvData.push(_asSection('Experience', 'dl', experience));
-    cvData.push(_asSection('Foreign languages', 'dl', foreignLanguages));
-    cvData.push(_asSection('Additional courses', 'dl', additionalCourses));
-    cvData.push(_asSection('Knowledge & skills', 'dl', knowledgeAndSkills));
-    cvData.push(_asSection('Hobby', 'ul', hobby));
+    cvData.push(_asCvSection('Personal data', 'dl', personalData));
+    cvData.push(_asCvSection('Edtucation', 'dl', education));
+    cvData.push(_asCvSection('Experience', 'dl', experience));
+    cvData.push(_asCvSection('Foreign languages', 'dl', foreignLanguages));
+    cvData.push(_asCvSection('Additional courses', 'dl', additionalCourses));
+    cvData.push(_asCvSection('Knowledge & skills', 'dl', knowledgeAndSkills));
+    cvData.push(_asCvSection('Hobby', 'ul', hobby));
 
     return cvData;
   }

@@ -2,8 +2,6 @@
   <h1>Curriculum vitae</h1>
 </header>
 
-{{ sections }}
-
 <main>
   <aside class="photo">
     <img src="../views/tomasz-kopacki.jpg" title="Tomasz Kopacki">
@@ -11,14 +9,17 @@
 
   <section ng-repeat="section in sections">
     <header>
-      <h3></h3>
+      <h3>{{ ::section.name }}</h3>
     </header>
 
     <article>
-      <dl>
-        <dt ng-repeat-start="i in items">{{i.key}}</dt>
-          <dd ng-repeat-end>{{i.value}}</dd>
+      <dl ng-if="section.type === 'dl'">
+        <dt ng-repeat-start="member in section.members">{{ ::member.label }}</dt>
+          <dd ng-repeat-end>{{ ::member.names.join('\n') }}</dd>
       </dl>
+      <ul ng-if="section.type === 'ul'">
+        <li ng-repeat="member in section.members">{{ ::member }}</li>
+      </ul>      
     </article>
   </section>
 
