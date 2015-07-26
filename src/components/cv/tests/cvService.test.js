@@ -19,4 +19,11 @@ describe('CV Service', () => {
       expect(CvService.constructor).toBeDefined();
     });
   });
+
+  describe('GetCvData', () => {
+    it('Returns object with data', () => {
+      let cvData = CvService.getCvData();
+      expect(cvData).toBeDefined();
+    });
+  });
 });
