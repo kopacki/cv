@@ -1,7 +1,10 @@
 function cvPageDirective () {
   return {
-      restrict: 'AE',
-      template: '<h1>Curriculum Vitae</h1>'
+      restrict: 'A',
+      template: require('./cvPage.html'),
+      scope: {
+        sections: '='
+      }
   };
 }
 

@@ -1,16 +1,12 @@
-//#region Private members
-
 let _personalDataValue;
-let _qService;
 
-function getDataForKeys(...keys) {
-  const data = new WeakMap();
+function _getDataForKeys(...keys) {
+  const data = {};
 
   for(let key of keys) {
     try {
-      let value = getDataForKey(key);
-
-      data.set(key, value);
+      let value = _getDataForKey(key);
+      data[key] = value;
     } catch (e) {
       console.error(e.message);
     }
@@ -19,7 +15,7 @@ function getDataForKeys(...keys) {
   return data;
 }
 
-function getDataForKey(key) {
+function _getDataForKey(key) {
   const data = _personalDataValue[key];
 
   if(!data) {
@@ -29,21 +25,26 @@ function getDataForKey(key) {
   return data;
 }
 
-//#endregion Private members
-
 class CvService {
-  constructor(personalDataValue, qService) {
+  constructor(personalDataValue) {
     _personalDataValue = personalDataValue;
-    _qService = qService;
   }
 
-  getBasicInformation() {
-    const basicInformationPromise = getDataForKeys('firstName', 'lastName', 'address', 'birthDay', 'email', 'phone');
+  getCvData() {
+    const cvData = {
+      personalData: _getDataForKeys('firstName', 'lastName', 'address', 'birthDay', 'email', 'phone'),
+      education: _getDataForKeys('education'),
+      experience: _getDataForKeys('experience'),
+      foreignLanguages: _getDataForKeys('foreignLanguages'),
+      additionalCourses: _getDataForKeys('additionalCourses'),
+      knowledgeAndSklills: _getDataForKeys('knowledgeAndSklills'),
+      hobby: _getDataForKeys('hobby')
+    };
 
-    return basicInformationPromise;
+    return cvData;
   }
 }
 
-CvService.$inject = ['PersonalDataValue', '$q'];
+CvService.$inject = ['PersonalDataValue'];
 
 export default CvService;
