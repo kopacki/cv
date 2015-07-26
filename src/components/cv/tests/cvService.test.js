@@ -5,11 +5,13 @@ import servicesModule from '../services';
 
 describe('CV Service', () => {
   let CvService;
+  let PersonalDataValue;
 
   beforeEach(angular.mock.module(servicesModule));
 
-  beforeEach(angular.mock.inject(_CvService_ => {
+  beforeEach(angular.mock.inject((_CvService_, _PersonalDataValue_) => {
     CvService = _CvService_;
+    PersonalDataValue = _PersonalDataValue_;
   }));
   
   describe('Constructor', () => {

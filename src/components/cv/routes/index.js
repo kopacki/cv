@@ -4,7 +4,7 @@ function routes($stateProvider) {
   $stateProvider
     .state('main', {
       url: '/',
-      template: require('./views/cvPage.html'),
+      template: require('../views/cvPage.html'),
       controller: 'MainController',
       controllerAs: 'cv'
     });
