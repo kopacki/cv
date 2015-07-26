@@ -5,9 +5,12 @@ const locals = {
 function appConfigFn($urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise('/');
-
- // $rootScope.locals = locals;
 }
 appConfigFn.$inject = ['$urlRouterProvider', '$locationProvider'];
 
-export default appConfigFn;
+function appRunFn ($rootScope) {
+  $rootScope.locals = locals;
+}
+appRunFn.$inject = ['$rootScope'];
+
+export { appConfigFn, appRunFn };
