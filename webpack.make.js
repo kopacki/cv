@@ -209,7 +209,13 @@ module.exports = function makeWebpackConfig (options) {
         inject: 'body',
         minify: BUILD
       })
-    )
+    );
+
+    config.plugins.push(new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    }));
   }
 
   // Add build specific plugins
