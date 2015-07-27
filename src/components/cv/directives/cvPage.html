@@ -4,16 +4,17 @@
 
 <section class="cvContent">
   <ul class="cvSections">
-    <li class="cvSection row" ng-repeat="section in sections">
-      <header class="col-xs-12">
+    <li class="cvSection"
+      ng-repeat="section in sections">
+      <header>
         <h3>{{ ::section.name }}</h3>
       </header>
 
-      <aside class="cvPhoto col-sm-3 col-xs-12" ng-if="$index === 0">
+      <aside class="cvPhoto" ng-if="$index === 0">
         <img src="../views/tomasz-kopacki.jpg" class="img-responsive" alt="Tomasz Kopacki">
       </aside>
 
-      <article class="col-sm-9 col-xs-12">     
+      <article>     
         <dl ng-if="section.type === 'dl'" class="dl-horizontal">
           <dt ng-repeat-start="member in section.members">{{ ::member.label }}</dt>
             <dd ng-repeat-end>{{ ::member.names.join('/n') }}</dd>
