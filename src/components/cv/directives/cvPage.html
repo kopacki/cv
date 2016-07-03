@@ -14,14 +14,14 @@
         <img src="../views/tomasz-kopacki.jpg" class="img-responsive" alt="Tomasz Kopacki">
       </aside>
 
-      <article>     
+      <article>
         <dl ng-if="section.type === 'dl'" class="dl-horizontal">
           <dt ng-repeat-start="member in section.members">{{ ::member.label }}</dt>
-            <dd ng-repeat-end>{{ ::member.names.join('/n') }}</dd>
+            <dd ng-repeat-end>{{ ::member.names.join('; ') }}</dd>
         </dl>
         <ul ng-if="section.type === 'ul'">
           <li ng-repeat="member in section.members">{{ ::member }}</li>
-        </ul>      
+        </ul>
       </article>
     </li>
   </ul>
